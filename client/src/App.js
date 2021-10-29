@@ -1,11 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
+import FormPage from './pages/FormPage';
+import SuccessPage from './pages/SuccessPage';
 
 function App() {
   return (
-    <div className="App">
-      <h1 className="text-red-500">Test Paragraph</h1>
-    </div>
+    <Router>
+      <Switch>
+        <Route path='/' exact component={FormPage}/>
+        <Route path='/success' exact component={SuccessPage}/>
+      </Switch>
+    </Router>
   );
 }
 
