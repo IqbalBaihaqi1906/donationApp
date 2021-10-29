@@ -14,14 +14,14 @@ function SuccessPage() {
         <div className="flex justify-center items-center w-full h-screen bg-green-200">
             <div className="w-5/6 md:w-1/3 flex flex-col gap-y-2 items-center bg-gray-100 rounded-md shadow-2xl p-8 m-4">
                 <div className="img">
-                <i className="fas fa-check fa-7x"></i>
+                    <i className="fas fa-check fa-7x"></i>
                 </div>
 
                 <h2 className="text-center uppercase font-semibold text-lg">
                     Thank you for your donation
                 </h2>
 
-                <h5 className="leading-loose">
+                <h5 className="leading-loose text-center">
                     Your Donation Has Been Submitted !
                 </h5>
 
