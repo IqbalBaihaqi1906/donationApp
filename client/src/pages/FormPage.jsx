@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react'
 import {useForm} from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
+import { useHistory } from 'react-router-dom';
 
 function FormPage() {
     const [formData,setFormData] = useState({})
     const [isSubmit,setIsSubmit] = useState(false)
+
+    const history = useHistory()
 
     // Submit Handler
     const onSubmit = async data => {
@@ -13,6 +16,7 @@ function FormPage() {
             setFormData(data)
             console.log(formData)
             localStorage.setItem("donated", "done");
+            history.push('/success')
         } catch (error) {
             console.log(error)
         }
