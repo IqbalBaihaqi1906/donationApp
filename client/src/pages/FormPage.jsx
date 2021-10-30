@@ -5,7 +5,7 @@ import * as yup from "yup";
 import { useHistory } from 'react-router-dom';
 import "./style.css"
 import axios from 'axios'
-// import Loading from '../components/loading/loading';
+import Loading from '../components/loading/loading';
 
 function FormPage() {
     const [formData,setFormData] = useState({})
@@ -19,14 +19,15 @@ function FormPage() {
         try {
             setFormData(data)
             setIsSubmit(true)
-            // setLoading(true)
+            console.log(formData)
+            setLoading(true)
             const donate = await axios({
                 method:"POST",
                 url:"http://localhost:3001/donate",
-                data:formData
+                data:data
             })
             localStorage.setItem("donated", "done");
-            // setLoading(false)
+            setLoading(false)
             history.push('/success')
         } catch (error) {
             console.log(error)
@@ -96,7 +97,7 @@ function FormPage() {
 
                 </form>
             </div>
-            {/* {loading ? <Loading/> : null} */}
+            {loading ? <Loading/> : null}
         </div>
     )
 }
