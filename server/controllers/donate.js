@@ -38,14 +38,14 @@ const donateController = {
             
             // get contact data
             const contactPerson = await SF.sobject("Contact").find({Email : email})
-            console.log(contactPerson)
+            // console.log(contactPerson)
 
             // create donation
             const date = new Date().toISOString()
             const donationData = {
+                Donor_Name__c : contactPerson[0].Id,
                 Donation_Amount__c : donation,
-                Donation_Datetime__c : date,
-                Donor_Name__c : contactPerson[0].Id
+                Donation_Datetime__c : date
             }
             const newDonation = await SF.sobject("Donation__c").create(donationData)
 
@@ -60,8 +60,7 @@ const donateController = {
             })
 
         } catch (error) {
-            console.log(error)
-            return next({code : 500,message:`Error at create method ${error.message}`})
+            next({code : 500,message:`Error at create method ${error.message}`})
         }
     }
 }

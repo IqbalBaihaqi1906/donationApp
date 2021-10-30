@@ -4,10 +4,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { useHistory } from 'react-router-dom';
 import "./style.css"
+import axios from 'axios'
+// import Loading from '../components/loading/loading';
 
 function FormPage() {
     const [formData,setFormData] = useState({})
     const [isSubmit,setIsSubmit] = useState(false)
+    const [loading,setLoading] = useState(false)
 
     const history = useHistory()
 
@@ -16,7 +19,14 @@ function FormPage() {
         try {
             setFormData(data)
             setIsSubmit(true)
+            // setLoading(true)
+            const donate = await axios({
+                method:"POST",
+                url:"http://localhost:3001/donate",
+                data:formData
+            })
             localStorage.setItem("donated", "done");
+            // setLoading(false)
             history.push('/success')
         } catch (error) {
             console.log(error)
@@ -86,6 +96,7 @@ function FormPage() {
 
                 </form>
             </div>
+            {/* {loading ? <Loading/> : null} */}
         </div>
     )
 }
