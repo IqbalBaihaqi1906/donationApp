@@ -23,7 +23,7 @@ function FormPage() {
             setLoading(true)
             const donate = await axios({
                 method:"POST",
-                url:"http://localhost:3001/donate",
+                url:"https://donationapp01.herokuapp.com/donate",
                 data:data
             })
             localStorage.setItem("donated", "done");
