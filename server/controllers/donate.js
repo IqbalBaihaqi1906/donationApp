@@ -58,6 +58,7 @@ const donateController = {
                 message : "Success",
                 newDonation
             })
+            console.log(success)
 
         } catch (error) {
             next({code : 500,message:`Error at create method ${error.message}`})
