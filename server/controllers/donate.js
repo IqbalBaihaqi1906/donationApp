@@ -54,11 +54,12 @@ const donateController = {
                 return next({code : 500, message:`Error at creating new donation ${error.message}`})
             }
 
-            res.status(200).json({
+            res.status(201).json({
                 message : "Success",
-                newDonation
+                newDonation,
+                contactPerson
             })
-            console.log(success)
+            console.log(`Success donation from ${contactPerson[0].LastName}`)
 
         } catch (error) {
             next({code : 500,message:`Error at create method ${error.message}`})
